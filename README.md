@@ -1,30 +1,73 @@
-# Architecture overview
+# Sayso Voice Image Editor
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+An AI-powered image editing application that transforms images using natural voice commands and text prompts.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/alabasteropus-projects/v0-architecture-overview)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/LCF8kRISgvl)
+## Features
 
-## Overview
+### 🎤 Voice-Powered Editing
+- **Natural Voice Commands**: Speak naturally to edit your images - "make the sky more dramatic" or "remove the person in the background"
+- **Speech-to-Text**: Powered by Fal AI's Whisper for accurate transcription
+- **Smart Prompt Translation**: Uses Google Gemini to convert casual commands into precise image editing instructions
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+### 🖼️ Intelligent Image Processing
+- **Upload & Edit**: Upload any image and edit it with voice or text commands
+- **AI Image Generation**: Create new images from text descriptions using FLUX.1 Kontext Pro
+- **Automatic Image Analysis**: Google Gemini Vision describes your images to provide context for better edits
+- **Aspect Ratio Detection**: Automatically detects and maintains proper image dimensions
 
-## Deployment
+### 🎯 Advanced AI Integration
+- **FLUX.1 Kontext Pro**: State-of-the-art image generation and editing
+- **Google Gemini**: Intelligent prompt processing and image understanding
+- **Fal AI Whisper**: High-quality speech recognition
+- **Smart Context Awareness**: Understands what's in your image to make better edits
 
-Your project is live at:
+### 💾 Session Management
+- **Multiple Sessions**: Work on different projects simultaneously
+- **Edit History**: Full undo/redo with timeline navigation
+- **Auto-Save**: Your work is automatically preserved
+- **Session Thumbnails**: Visual overview of all your projects
 
-**[https://vercel.com/alabasteropus-projects/v0-architecture-overview](https://vercel.com/alabasteropus-projects/v0-architecture-overview)**
-
-## Build your app
-
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/LCF8kRISgvl](https://v0.dev/chat/projects/LCF8kRISgvl)**
+### 🎨 Modern Interface
+- **Dark Mode**: Sleek, professional interface optimized for image work
+- **Responsive Design**: Works seamlessly across devices
+- **Real-time Feedback**: Live processing status and visual feedback
+- **Keyboard Navigation**: Arrow keys for timeline navigation
 
 ## How It Works
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+1. **Upload an Image** or **Generate from Text**: Start with an existing photo or create something new
+2. **Speak or Type Commands**: Use natural language like "make it more colorful" or "add a sunset"
+3. **AI Processing**: The app translates your command into precise editing instructions
+4. **Instant Results**: See your edited image in seconds with full history tracking
+
+## Technology Stack
+
+- **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS
+- **AI Services**: 
+  - Fal AI (FLUX.1 Kontext Pro, Whisper)
+  - Google Gemini (Vision, Flash)
+- **UI Components**: Radix UI, Shadcn/ui
+- **Deployment**: Vercel
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Set up environment variables for AI services
+4. Run the development server: `npm run dev`
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Environment Variables
+
+```env
+GEMINI_API_KEY=your_gemini_api_key
+FAL_KEY=your_fal_api_key
+```
+
+## Use Cases
+
+- **Photo Enhancement**: Improve lighting, colors, and composition
+- **Object Removal**: Remove unwanted elements from photos
+- **Style Transfer**: Apply artistic styles and effects
+- **Creative Generation**: Generate new images from descriptions
+- **Quick Edits**: Make fast adjustments with voice commands

@@ -18,7 +18,7 @@ Be specific about what to edit and what to preserve. Focus on the exact request 
 
 export async function POST(request: NextRequest) {
   try {
-    const { userCommand } = await request.json()
+    const { userCommand, imageDescription } = await request.json()
 
     if (!userCommand) {
       return NextResponse.json({ error: "No user command provided" }, { status: 400 })
@@ -27,6 +27,8 @@ export async function POST(request: NextRequest) {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" })
 
     const prompt = `${SYSTEM_PROMPT}
+
+${imageDescription ? `Current image context: ${imageDescription}` : 'No image context available - provide general editing instructions.'}
 
 User command: "${userCommand}"
 

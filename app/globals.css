@@ -74,3 +74,44 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-muted-foreground/30;
 }
+
+/* Vision analysis animations */
+@keyframes scan-horizontal {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes scan-vertical {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.animate-scan-horizontal {
+  animation: scan-horizontal 2s ease-in-out infinite;
+}
+
+.animate-scan-vertical {
+  animation: scan-vertical 2.5s ease-in-out infinite;
+}
+
+/* Custom select styling */
+.custom-select {
+  accent-color: #ea580c; /* orange-600 */
+}
+
+.custom-select option {
+  background-color: #171717 !important; /* neutral-900 */
+  color: #a3a3a3 !important; /* neutral-400 */
+}
+
+.custom-select option:hover {
+  background-color: #ea580c !important; /* orange-600 */
+  color: #fed7aa !important; /* orange-100 */
+}
+
+.custom-select option:checked {
+  background-color: #9a3412 !important; /* orange-800 */
+  color: #fed7aa !important; /* orange-200 */
+}

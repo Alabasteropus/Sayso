@@ -41,15 +41,16 @@ export async function POST(req: NextRequest) {
 
   /* ---------- 2. Fal Whisper ---------- */
   try {
-    // Convert base64 to proper data URL format for audio/webm
-    const dataUrl = `data:audio/webm;base64,${audioBase64}`
+    // Convert base64 to Buffer and then to Blob for file upload
+    const audioBuffer = Buffer.from(audioBase64, 'base64')
+    const audioBlob = new Blob([audioBuffer], { type: 'audio/webm' })
 
     prettyLog("Calling Fal Whisper", { bytes: audioBase64.length })
 
-    // Use the new fal.subscribe API with correct parameters
+    // Use the new fal.subscribe API with file upload
     const result = await fal.subscribe("fal-ai/whisper", {
       input: {
-        audio_url: dataUrl,
+        audio_url: audioBlob,
         task: "transcribe",
         language: "en",
         chunk_level: "segment",
