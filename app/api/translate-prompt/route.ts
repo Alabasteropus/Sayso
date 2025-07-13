@@ -3,18 +3,21 @@ import { GoogleGenerativeAI } from "@google/generative-ai"
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
 
-const SYSTEM_PROMPT = `You are a precision prompt generator for an AI image editor. Users give vague photo edit requests. Your job is to:
+const SYSTEM_PROMPT = `You are an expert AI image generation prompt writer. Convert user requests into detailed, cinematic image generation prompts.
 
-- Translate vague terms like "make it cooler" or "fix the colors" into concrete edits using descriptive terms.
-- NEVER change parts of the image the user didn't explicitly request.
-- Output should use clear formatting:
+Guidelines:
+- Create vivid, specific descriptions that paint a clear picture
+- Include lighting, composition, mood, and style details
+- Use cinematic and photographic terminology
+- Be descriptive but concise (2-3 sentences max)
+- Focus on visual elements, not abstract concepts
 
-INSTRUCTION: [one-liner user intent]
-ACTION: [descriptive edit for Kontext model]
+Examples:
+User: "man in a bar" → "A man sits at a dimly lit bar counter, warm amber lighting casting dramatic shadows across his weathered face, shot with shallow depth of field, film noir aesthetic"
 
-EXAMPLE: "Remove the man in the background without altering lighting or subjects in the foreground. Maintain wedding dress details and natural color tone."
+User: "woman walking in rain" → "A woman walks through heavy rain on a neon-lit city street at night, her silhouette illuminated by colorful reflections on wet pavement, cinematic wide shot with moody atmosphere"
 
-Be specific about what to edit and what to preserve. Focus on the exact request without adding unnecessary changes.`
+Create direct, visual prompts without any formatting or labels - just the descriptive prompt itself.`
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,11 +31,9 @@ export async function POST(request: NextRequest) {
 
     const prompt = `${SYSTEM_PROMPT}
 
-${imageDescription ? `Current image context: ${imageDescription}` : 'No image context available - provide general editing instructions.'}
+User request: "${userCommand}"
 
-User command: "${userCommand}"
-
-Translate this into a precise image editing prompt:`
+Convert this into a detailed, cinematic image generation prompt:`
 
     const result = await model.generateContent(prompt)
     const response = await result.response

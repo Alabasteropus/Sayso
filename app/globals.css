@@ -115,3 +115,49 @@
   background-color: #9a3412 !important; /* orange-800 */
   color: #fed7aa !important; /* orange-200 */
 }
+
+/* Shimmer animation for loading cards */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Animated blur effects for video generation */
+@keyframes blur-pulse {
+  0% { filter: blur(10px) brightness(0.8); }
+  50% { filter: blur(5px) brightness(1.1); }
+  100% { filter: blur(10px) brightness(0.8); }
+}
+
+@keyframes blur-shimmer {
+  0% { 
+    transform: translateX(-100%);
+    backdrop-filter: blur(8px);
+  }
+  50% { 
+    transform: translateX(0%);
+    backdrop-filter: blur(2px);
+  }
+  100% { 
+    transform: translateX(100%);
+    backdrop-filter: blur(8px);
+  }
+}
+
+/* Colorful gradient animations for loading states */
+@keyframes color-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes rainbow-shimmer {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(100%) skewX(-15deg); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
