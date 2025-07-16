@@ -26,16 +26,19 @@ export async function POST(request: NextRequest) {
       aspectRatio: aspectRatio || "1:1",
     })
     
+    // Prepare input for FAL text-to-image generation
+    const input = {
+      prompt: prompt,
+      aspect_ratio: aspectRatio || "1:1",
+      output_format: "jpeg",
+      safety_tolerance: 2,
+      num_images: 4, // Generate 4 images in parallel
+      seed: Math.floor(Math.random() * 1000000),
+    }
+    
     // Submit to queue with webhook (much more efficient than polling)
     const { request_id } = await fal.queue.submit("fal-ai/flux-pro/kontext/text-to-image", {
-      input: {
-        prompt: prompt,
-        aspect_ratio: aspectRatio || "1:1",
-        output_format: "jpeg",
-        safety_tolerance: 2,
-        num_images: 4, // Generate 4 images in parallel
-        seed: Math.floor(Math.random() * 1000000),
-      },
+      input,
       // Optional: Add webhook URL for real-time updates
       // webhookUrl: `${process.env.NEXT_PUBLIC_APP_URL}/api/webhook/flux-complete`,
     })

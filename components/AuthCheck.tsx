@@ -138,7 +138,7 @@ function EmailAuthForm({ onSignIn, onSignUp, onSkipAuth }: EmailAuthFormProps) {
     <div className="min-h-screen bg-neutral-950 flex items-center justify-center">
       <div className="bg-neutral-900 p-8 rounded-lg border border-neutral-800 w-full max-w-md">
         <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold text-white mb-2">Film Tool</h1>
+          <h1 className="text-2xl font-bold text-white mb-2">Creative Studio</h1>
           <p className="text-neutral-400">Authentication required</p>
         </div>
 
@@ -151,7 +151,7 @@ function EmailAuthForm({ onSignIn, onSignUp, onSkipAuth }: EmailAuthFormProps) {
             Continue without authentication (Development)
           </Button>
           <p className="text-xs text-neutral-500 mt-2 text-center">
-            Skip login and start using the film tool right away
+            Skip login and start using the creative studio right away
           </p>
         </div>
 

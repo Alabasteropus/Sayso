@@ -24,7 +24,7 @@ export default function SessionSidebar({
   onLoadSession
 }: SessionSidebarProps) {
   return (
-    <div className="w-16 bg-neutral-900/50 border-r border-neutral-800/50 flex flex-col p-2 gap-2">
+    <div className="fixed left-0 top-0 h-full flex flex-col items-center justify-center gap-2 pl-4 z-10">
       <Button
         onClick={onCreateNewSession}
         variant="ghost"
@@ -33,7 +33,7 @@ export default function SessionSidebar({
       >
         <Plus className="w-5 h-5" />
       </Button>
-      <div className="flex flex-col gap-2 overflow-y-auto">
+      <div className="flex flex-col gap-2 overflow-y-auto max-h-96">
         {sessions.map((session) => (
           <Button
             key={session.id}
